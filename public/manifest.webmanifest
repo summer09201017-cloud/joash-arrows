@@ -1,0 +1,24 @@
+{
+  "name": "約阿施的得勝箭",
+  "short_name": "得勝箭",
+  "description": "列王紀下13章:開朝東的窗戶,射出耶和華的得勝箭;再拿箭打地——打幾次,你決定。3D 聖經射箭遊戲。",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09131d",
+  "theme_color": "#0d1f2b",
+  "orientation": "landscape",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}
