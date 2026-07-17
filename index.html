@@ -233,5 +233,12 @@
         <button id="strikeStopButton" type="button">住手(不打了)</button>
       </div>
     <script type="module" src="/src/main.js"></script>
-  </body>
+  <script>
+try {
+  if (location.hostname.endsWith('netlify.app')) {
+    navigator.sendBeacon?.('https://hfpc-play-stats.summer09201017.workers.dev/api/ping?g=joash-arrows');
+  }
+} catch (_) {}
+</script>
+</body>
 </html>
