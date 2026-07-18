@@ -703,7 +703,7 @@ button.active {
 .commentary-bar {
   position: fixed;
   left: 50%;
-  top: 72px;
+  top: 96px;
   transform: translateX(-50%);
   max-width: min(86vw, 640px);
   padding: 8px 18px;
@@ -748,3 +748,6 @@ button.active {
 
 /* [hidden] 修正:上面兩個面板的 display:flex 會蓋過 UA 的 [hidden]{display:none}(archery3d 潛在蟲,這裡修掉) */
 .power-panel-big[hidden], .strike-panel[hidden] { display: none; }
+
+/* 防疫(07-19 批次):殼層面板 display:flex 會蓋過 UA 的 [hidden]{display:none} */
+[hidden] { display: none !important; }
