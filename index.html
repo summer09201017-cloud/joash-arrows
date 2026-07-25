@@ -271,5 +271,25 @@ try {
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', add); else add();
 })();
 </script>
+
+<script>
+// 真實停留打點(skill play-stats-dwell):開頁到離開,單發 joash-arrows-dwell。
+// ★ 只送這一發:手機鎖屏時常只送得出佇列第一個 beacon,同一刻連發兩個會有一發被丟掉。
+(function () {
+  var SITE = 'joash-arrows', t0 = Date.now(), sent = false;
+  function bye() {
+    if (sent) return; sent = true;
+    var sec = Math.round((Date.now() - t0) / 1000);
+    if (sec < 3 || sec > 1800) return;                     // 誤觸不算、掛整天的背景分頁不算
+    if (['localhost', '127.0.0.1', ''].indexOf(location.hostname) >= 0) return;
+    try {
+      navigator.sendBeacon &&
+        navigator.sendBeacon('https://hfpc-play-stats.summer09201017.workers.dev/api/ping?g=' + SITE + '-dwell&t=' + sec);
+    } catch (e) {}
+  }
+  addEventListener('pagehide', bye);
+  document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') bye(); });
+})();
+</script>
 </body>
 </html>
