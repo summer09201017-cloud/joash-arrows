@@ -751,3 +751,17 @@ button.active {
 
 /* 防疫(07-19 批次):殼層面板 display:flex 會蓋過 UA 的 [hidden]{display:none} */
 [hidden] { display: none !important; }
+
+/* mfs-home-screen-scroll v1 —— 手機橫向(390px 高)首頁選單比視口高時能捲、不被上下切掉。
+   原本 display:grid + place-items:center 沒有 overflow-y:內容一長就上下都切、頁面也不能捲(0907 馬術站實玩回報,全艦隊 24 站同病)。
+   flex 直欄 + overflow-y:auto,.home-content 用 margin:auto 0 ⇒ 短時垂直置中(桌機不變)、長時從頂端開始可捲到底。
+   勿手改;要改請改 skills/force-landscape-pwa/patches/fix-home-screen-scroll.mjs 後重打 */
+.home-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+.home-content { margin: auto 0; flex: 0 0 auto; }
